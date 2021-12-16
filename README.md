@@ -1,6 +1,7 @@
 
 Install:
-    helm upgrade --install --repo https://argoproj.github.io/argo-helm argocd argo-cd --values argo_values.yaml
+
+    helm upgrade --install --namespace argocd --create-namespace --repo https://argoproj.github.io/argo-helm argocd argo-cd --values argo_values.yaml
 
 Get Password:
 

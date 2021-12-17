@@ -1,6 +1,6 @@
 
 applications:
-  - path: traefik
+  - path: applications/traefik
     releaseName: traefik
     namespace: traefik
 

@@ -20,3 +20,8 @@ server:
         automated:
           prune: true
           selfHeal: true
+
+  extraArgs:
+    - --insecure
+    - --rootpath
+    - /argocd

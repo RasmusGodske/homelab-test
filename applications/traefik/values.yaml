@@ -1,1 +1,29 @@
 base_host: reverseproxy.local.gheotic.com
+
+traefik:
+  ### DEFAULT
+  # additionalArguments:
+  #   - "--metrics.prometheus=true"
+
+  entryPoints:
+    metrics:
+      address: ":8082"
+
+  metrics:
+    prometheus:
+      entryPoint: traefik
+      addRoutersLabels: true
+
+      buckets:
+        - 0.1
+        - 0.3
+        - 1.2
+        - 5.0
+
+  logs:
+    genearl:
+      level: DEBUG
+    access:
+      enabled: true
+      filters:
+        statuscodes: "1-500"

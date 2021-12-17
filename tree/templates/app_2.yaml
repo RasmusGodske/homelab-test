@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guestbook_1
+  name: guestbook2
   # You'll usually want to add your resources to the argocd namespace.
   namespace: argocd
   # Add a this finalizer ONLY if you want these to cascade delete.
@@ -28,7 +28,7 @@ spec:
         forceString: true # ensures that value is treated as a string
 
       # Release name override (defaults to application name)
-      releaseName: guestbook_1
+      releaseName: guestbook2
 
       # Helm values files for overriding values in the helm chart
       # The path is relative to the spec.source.path directory defined above

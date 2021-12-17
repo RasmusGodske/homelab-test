@@ -1,7 +1,8 @@
+{{- range $app := .Values.applications }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guestbook2
+  name: {{ $app.releaseName }}   
   # You'll usually want to add your resources to the argocd namespace.
   namespace: argocd
   # Add a this finalizer ONLY if you want these to cascade delete.
@@ -13,9 +14,9 @@ spec:
 
   # Source of the application manifests
   source:
-    repoURL: https://github.com/argoproj/argocd-example-apps.git
+    repoURL: https://github.com/RasmusGodske/homelab-test.git
     targetRevision: HEAD
-    path: guestbook
+    path: {{ $app.path }}   
 
     # helm specific config
     helm:
@@ -28,7 +29,7 @@ spec:
       #   forceString: true # ensures that value is treated as a string
 
       # Release name override (defaults to application name)
-      releaseName: guestbook2
+      releaseName: {{ $app.releaseName }}   
 
       # Helm values files for overriding values in the helm chart
       # The path is relative to the spec.source.path directory defined above
@@ -94,7 +95,7 @@ spec:
   # Destination cluster and namespace to deploy the application
   destination:
     server: https://kubernetes.default.svc
-    namespace: guestbook
+    namespace: {{ $app.namespace }}  
 
   # Sync policy
   syncPolicy:
@@ -121,3 +122,4 @@ spec:
   #   kind: Deployment
   #   jsonPointers:
   #   - /spec/replicas
+{{- end }}    

@@ -1,4 +1,7 @@
 
-apps:
-  - traefik
-  - app42
+applications:
+  - path: traefik
+    releaseName: traefik
+    namespace: traefik
+
+

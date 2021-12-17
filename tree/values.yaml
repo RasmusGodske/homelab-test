@@ -2,6 +2,6 @@
 applications:
   - path: applications/traefik
     releaseName: traefik
-    namespace: traefik
+    namespace: default
 
 
